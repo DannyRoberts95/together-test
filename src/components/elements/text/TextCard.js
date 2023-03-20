@@ -1,30 +1,32 @@
 import React from "react";
 import LinkGroup from "~/components/elements/links/LinkGroup";
 
-export function TextCard({
-	subheading = "",
-	heading = "",
-	content = "",
-	links = [],
-	options: {
-		max_width = "",
-		text_alignment = "",
-		has_mobile_text_alignment = false,
-		mobile_text_alignment = "",
-		section_alignment = "",
-		subheading_tag = "h6",
-		subheading_font_size = "default",
-		subheading_classes = "",
-		heading_tag = "",
-		heading_font_size = "default",
-		heading_classes = "",
-		heading_max_width = "",
-		content_max_width = "",
-		content_classes = "",
-		custom_y_spacing = "",
-		mobile_section_alignment = "",
-	} = {},
-}) {
+export function TextCard(props) {
+	const {
+		subheading = "",
+		heading = "",
+		content = "",
+		links = [],
+		options: {
+			max_width = "",
+			text_alignment = "",
+			has_mobile_text_alignment = false,
+			mobile_text_alignment = "",
+			section_alignment = "",
+			subheading_tag = "h6",
+			subheading_font_size = "default",
+			subheading_classes = "",
+			heading_tag = "",
+			heading_font_size = "default",
+			heading_classes = "",
+			heading_max_width = "",
+			content_max_width = "",
+			content_classes = "",
+			custom_y_spacing = "",
+			mobile_section_alignment = "",
+		} = {},
+	} = props;
+
 	const HeadingTag = heading_tag || "h2";
 	const headingFontSize = heading_font_size === "default" ? HeadingTag : heading_font_size;
 

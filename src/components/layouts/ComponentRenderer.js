@@ -2,6 +2,7 @@ import React from "react";
 import { LayoutGroup } from "framer-motion";
 import { TestComponent } from "~/components/flexible/TestComponent";
 import { TextCard } from "~/components/elements/text/TextCard";
+import FigureCard from "../flexible/FigureCard";
 
 export function ComponentRenderer({ components = [], pageId = null }) {
 	return (
@@ -13,6 +14,7 @@ export function ComponentRenderer({ components = [], pageId = null }) {
 					<React.Fragment key={pageId + layoutName + i}>
 						{layoutName === "test_component" && <TestComponent {...layout} />}
 						{layoutName === "text_card" && <TextCard {...layout.text_card} />}
+						{layoutName === "figure_card" && <FigureCard {...layout.figure_card} />}
 					</React.Fragment>
 				);
 			})}

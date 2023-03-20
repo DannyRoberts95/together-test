@@ -1,6 +1,7 @@
 import React from "react";
 import NextLink from "next/link";
 import { Button, TextLink } from "~/components/elements/buttons/Button";
+import { ArrowExternal } from "~/components/icons";
 
 export function Link(props) {
 	const { link, type, href, to, target, children, className, ...other } = props;
@@ -25,12 +26,15 @@ export function Link(props) {
 	const defaultLinkClasses = `inline-block ${className || ""} ${url.length === 0 || url === "#" ? "pointer-events-none cursor-default" : ""}`;
 
 	return isExternal ? (
-		<a href={urlPath} target={link?.target || target || ""} className={defaultLinkClasses} {...other}>
+		<a href={urlPath} target={link?.target || target || ""} className={`${defaultLinkClasses} flex-wrap-none flex items-center`} {...other}>
 			<LinkTypeRenderer {...props} />
+			{link?.startIcon && <div className="mr-2">{link.startIcon}</div>}
+			<ArrowExternal className="ml-2" />
 		</a>
 	) : (
 		<NextLink href={urlPath} target={link?.target || target || ""}>
-			<a className={defaultLinkClasses} {...other}>
+			<a className={`${defaultLinkClasses} flex-wrap-none flex items-center `} {...other}>
+				{link?.startIcon && <div className="mr-2">{link.startIcon}</div>}
 				<LinkTypeRenderer {...props} />
 			</a>
 		</NextLink>

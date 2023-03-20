@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
+// TODO: ADD MOTION
+
 /**
  * Button
  */
@@ -17,7 +19,15 @@ export function Button({ link, button, size, className = "", children, ...other 
 		typeClasses += " inline-block rounded text-16px px-7 py-3 leading-[1.3] font-medium";
 	}
 
-	if (button?.type === "outline") {
+	if (button?.type === "text") {
+		typeClasses += " bg-transparent border-none";
+		if (button?.color === "white") {
+			typeClasses += " text-white hover:border-2 hover:border-red-500 hover:text-black";
+		}
+		if (button?.color === "black") {
+			typeClasses += " text-black hover:border-grey-500";
+		}
+	} else if (button?.type === "outline") {
 		typeClasses += " bg-transparent border";
 		if (button?.color === "white") {
 			typeClasses += " border-white hover:bg-white hover:text-black";
