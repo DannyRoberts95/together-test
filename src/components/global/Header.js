@@ -5,6 +5,8 @@ import Button from "../elements/buttons/Button";
 import LinkDropMenu from "../elements/links/LinkDropMenu";
 import Logo from "../elements/Logo";
 
+// TODO Add scroll hiding
+
 export default function Header() {
 	// eslint-disable-next-line no-unused-vars
 	const [context] = useContext(GlobalContext);

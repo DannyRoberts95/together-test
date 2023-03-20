@@ -30,7 +30,7 @@ const mockSections = [
 						section_max_width: "",
 						section_alignment: "center",
 						text_alignment: "center",
-						has_mobile_text_alignment: false,
+						has_mobile_text_alignment: true,
 						mobile_text_alignment: "left",
 						subheading_tag: "h6",
 						subheading_font_size: "default",
@@ -48,7 +48,7 @@ const mockSections = [
 				acf_fc_layout: "figure_card",
 				acfe_flexible_toggle: "",
 				figure_card: {
-					figure_src: "/images/image_00.jpg",
+					figure_src: "/images/illustrations/image_00.png",
 					hotspots: [
 						{ x: "50%", y: "45%" },
 						{ x: "20%", y: "80%" },
