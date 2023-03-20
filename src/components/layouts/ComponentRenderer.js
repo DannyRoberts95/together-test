@@ -3,6 +3,7 @@ import { LayoutGroup } from "framer-motion";
 import { TestComponent } from "~/components/flexible/TestComponent";
 import { TextCard } from "~/components/elements/text/TextCard";
 import FigureCard from "../flexible/FigureCard";
+import ImageCarousel from "../flexible/ImageCarousel";
 
 export function ComponentRenderer({ components = [], pageId = null }) {
 	return (
@@ -15,6 +16,7 @@ export function ComponentRenderer({ components = [], pageId = null }) {
 						{layoutName === "test_component" && <TestComponent {...layout} />}
 						{layoutName === "text_card" && <TextCard {...layout.text_card} />}
 						{layoutName === "figure_card" && <FigureCard {...layout.figure_card} />}
+						{layoutName === "image_carousel" && <ImageCarousel {...layout.figure_card} />}
 					</React.Fragment>
 				);
 			})}
