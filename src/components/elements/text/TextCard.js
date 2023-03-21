@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 import LinkGroup from "~/components/elements/links/LinkGroup";
 
@@ -7,8 +8,10 @@ export function TextCard(props) {
 		heading = "",
 		content = "",
 		links = [],
+		background_image = null,
 		options: {
 			max_width = "",
+			vertical_padding = "py-24",
 			text_alignment = "",
 			has_mobile_text_alignment = false,
 			mobile_text_alignment = "",
@@ -26,6 +29,8 @@ export function TextCard(props) {
 			mobile_section_alignment = "",
 		} = {},
 	} = props;
+
+	console.log("background_image", background_image);
 
 	const HeadingTag = heading_tag || "h2";
 	const headingFontSize = heading_font_size === "default" ? HeadingTag : heading_font_size;
@@ -51,9 +56,16 @@ export function TextCard(props) {
 	}
 
 	return (
-		<div className={`flex w-full flex-col ${mobile_section_alignment} ${sectionAlignmentClasses}`}>
+		<div className={`relative flex w-full flex-col ${mobile_section_alignment} ${sectionAlignmentClasses} `}>
+			{/* background image */}
+			{background_image && (
+				<div className="absolute top-0 left-0 h-full w-full ">
+					<Image layout="fill" priority objectFit="cover" objectPosition="top center" src={background_image.src} />
+				</div>
+			)}
+
 			<div
-				className={`text-card flex flex-col ${flexItemAlignment} ${ySpacing} text-${
+				className={`text-card z-20 flex flex-col ${vertical_padding} ${flexItemAlignment} ${ySpacing} text-${
 					has_mobile_text_alignment ? mobile_text_alignment : text_alignment
 				} md:text-${text_alignment} md:${max_width}`}
 			>

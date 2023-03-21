@@ -2,10 +2,18 @@ const mockSections = [
 	{
 		acf_fc_layout: "section",
 		components: [
+			// ******************
+			// MASTHEAD
+			// ******************
+
 			{
 				acf_fc_layout: "text_card",
 				acfe_flexible_toggle: "",
 				text_card: {
+					background_image: {
+						src: "/images/backgrounds/background_01.jpg",
+						alt: false,
+					},
 					subheading: "",
 					heading: "One platform powering \n better information.",
 					content: "<p>Hawk empowers Public Safety agencies to make mission-critical decisions in real-time.\n",
@@ -39,12 +47,16 @@ const mockSections = [
 						heading_tag: "h1",
 						heading_font_size: "default",
 
-						heading_classes: "max-w-2xl",
-						content_max_width: "max-w-lg",
+						max_width: "max-w-2xl",
 						content_classes: "",
 					},
 				},
 			},
+
+			// ******************
+			// IMAGE
+			// ******************
+
 			{
 				acf_fc_layout: "figure_card",
 				acfe_flexible_toggle: "",
@@ -57,10 +69,13 @@ const mockSections = [
 					],
 				},
 			},
+			// ******************
+			// PARTNERS
+			// ******************
 			{
 				acf_fc_layout: "image_carousel",
 				acfe_flexible_toggle: "",
-				figure_card: {
+				image_carousel: {
 					title: "Trusted by global organizations",
 					images: [
 						"/images/partners/00.png",
@@ -75,7 +90,149 @@ const mockSections = [
 					],
 				},
 			},
+
+			// ******************
+			// ACCORDIANS
+			// ******************
+
+			{
+				acf_fc_layout: "section_accordian",
+				acfe_flexible_toggle: "",
+				section_carousel: {
+					title: "Trusted by global organizations",
+					sections: [
+						{
+							subheading: "Visualise",
+							heading: "Never Miss a Thing.",
+							content: "<p>Hawk empowers Public Safety agencies to make mission-critical decisions in real-time.\n",
+							image: "/images/illustrations/image_05.png",
+							links: [
+								{
+									link: {
+										link: {
+											title: "Get Started",
+											url: "/resources/",
+											target: "",
+										},
+										type: "text",
+										button: {
+											"": null,
+											type: "default",
+											background_color: "white",
+										},
+									},
+								},
+							],
+						},
+						{
+							image: "/images/illustrations/image_03.png",
+							subheading: "Collaborate",
+							heading: "Access real-time information.",
+							content:
+								"<p>Ensure first responders are on the same page with real-time alerts and instant access to information. Eliminate silos and work effectively as a team.\n",
+						},
+						{
+							image: "/images/illustrations/image_04.png",
+							subheading: "Respond",
+							heading: "Respond faster & more efficiently",
+							content: "<p>Develop smarter strategies and make better decisions. Save lives and protect communities.\n",
+						},
+					],
+				},
+			},
+			// ******************
+			// ANIMATED TEXT
+			// ******************
+			{
+				acf_fc_layout: "text_card",
+				acfe_flexible_toggle: "",
+				text_card: {
+					subheading: "Our Mission",
+					heading: "We’re empowering the world’s most important organizations to transform Public Safety, protect civil liberties & ensure personal freedom.",
+					links: [
+						{
+							link: {
+								link: {
+									title: "Learn More",
+									url: "https://www.danhowarddesign.com",
+									target: "_blank",
+								},
+								type: "text",
+							},
+						},
+					],
+
+					options: {
+						section_alignment: "center",
+						text_alignment: "left",
+						has_mobile_text_alignment: false,
+						mobile_text_alignment: "left",
+						subheading_tag: "h4",
+						subheading_font_size: "default",
+						subheading_classes: "",
+						heading_tag: "h2",
+						heading_font_size: "default",
+
+						section_max_width: "",
+						max_width: "max-w-2xl",
+						heading_classes: "",
+						content_max_width: "",
+						content_classes: "",
+					},
+				},
+			},
+			// ******************
+			// CTA
+			// ******************
+			{
+				acf_fc_layout: "text_card",
+				acfe_flexible_toggle: "",
+				text_card: {
+					background_image: {
+						src: "/images/backgrounds/background_00.jpg",
+						alt: false,
+					},
+					subheading: "",
+					heading: "Achieve breakthrough moments.",
+					content: "",
+					links: [
+						{
+							link: {
+								link: {
+									title: "Get Started",
+									url: "#",
+									target: "",
+								},
+								type: "button",
+								button: {
+									type: "default",
+									background_color: "yellow",
+								},
+							},
+						},
+					],
+					options: {
+						section_max_width: "",
+						section_alignment: "center",
+						text_alignment: "center",
+						// TODO FIX MOBILE ALIGNMENT
+						has_mobile_text_alignment: false,
+						mobile_text_alignment: "left",
+						subheading_tag: "h6",
+						subheading_font_size: "default",
+						subheading_classes: "",
+						heading_tag: "h1",
+						heading_font_size: "default",
+
+						max_width: "max-w-2xl",
+						heading_classes: "max-w-2xl",
+						content_max_width: "max-w-lg",
+						content_classes: "",
+					},
+				},
+			},
 		],
+
 		id: "",
 		classnames: "",
 		padding_top: "medium",
@@ -83,6 +240,7 @@ const mockSections = [
 		inner_spacing: "medium",
 		has_container: true,
 		overflow: false,
+
 		background: {
 			background_color: "white",
 			background_asset: {
@@ -96,6 +254,7 @@ const mockSections = [
 				multiple: false,
 			},
 		},
+
 		is_rounded: false,
 		rounded_options: {
 			inner_background_color: false,

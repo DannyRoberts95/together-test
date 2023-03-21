@@ -1,9 +1,9 @@
 import React from "react";
 import { LayoutGroup } from "framer-motion";
-import { TestComponent } from "~/components/flexible/TestComponent";
 import { TextCard } from "~/components/elements/text/TextCard";
 import FigureCard from "../flexible/FigureCard";
 import ImageCarousel from "../flexible/ImageCarousel";
+import SectionAccordian from "../flexible/SectionAccordian";
 
 export function ComponentRenderer({ components = [], pageId = null }) {
 	return (
@@ -13,10 +13,10 @@ export function ComponentRenderer({ components = [], pageId = null }) {
 				const layoutName = layout.acf_fc_layout;
 				return (
 					<React.Fragment key={pageId + layoutName + i}>
-						{layoutName === "test_component" && <TestComponent {...layout} />}
 						{layoutName === "text_card" && <TextCard {...layout.text_card} />}
 						{layoutName === "figure_card" && <FigureCard {...layout.figure_card} />}
-						{layoutName === "image_carousel" && <ImageCarousel {...layout.figure_card} />}
+						{layoutName === "image_carousel" && <ImageCarousel {...layout.image_carousel} />}
+						{layoutName === "section_accordian" && <SectionAccordian {...layout.section_carousel} />}
 					</React.Fragment>
 				);
 			})}
