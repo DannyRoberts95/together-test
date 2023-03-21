@@ -4,9 +4,7 @@ import { motion, useInView } from "framer-motion";
 import TextCard from "../elements/text/TextCard";
 
 function Accordion(props) {
-	const { i, expanded, section = {} } = props;
-	const open = i === expanded;
-
+	const { open, section = {} } = props;
 	return (
 		<>
 			<h3 className="text-h4 my-2">{section.subheading}</h3>
@@ -14,7 +12,7 @@ function Accordion(props) {
 				initial="collapsed"
 				exit="collapsed"
 				animate={{ opacity: open ? 1 : 0, height: open ? "auto" : 0 }}
-				transition={{ duration: 1, ease: "easeInOut" }}
+				transition={{ duration: 1, ease: "anticipate" }}
 				className="pl-4"
 			>
 				<TextCard
@@ -71,14 +69,28 @@ function AccordianImage(props) {
 function SectionAccordian(props) {
 	const { sections = [] } = props;
 	const [expanded, setExpanded] = useState(0);
-	const parentRef = useRef(null);
 
 	return (
 		<div className="center flex flex-col items-center">
-			<div
-				ref={parentRef}
-				className="relative mb-12 grid min-h-[100vh] grid-cols-2 gap-24 p-8"
-			>
+			{/* Mobile */}
+			<div className="relative mb-12 p-8  md:hidden">
+				<div className="flex flex-col gap-y-8">
+					{sections.map((section, i) => (
+						<>
+							<AccordianImage
+								i={i}
+								src={section.image}
+								key={`${section.subheading}accordianImage`}
+								handleEnterView={() => setExpanded(i)}
+							/>
+							<Accordion section={section} open setExpanded={setExpanded} />
+						</>
+					))}
+				</div>
+			</div>
+
+			{/* Desktop */}
+			<div className=" relative mb-12  hidden min-h-[100vh] grid-cols-2 gap-24 p-8 md:grid">
 				{/* column */}
 				<motion.div
 					className=" sticky top-[25%] h-fit "
@@ -89,9 +101,8 @@ function SectionAccordian(props) {
 					{/* accordian */}
 					{sections.map((section, i) => (
 						<Accordion
-							i={i}
 							section={section}
-							expanded={expanded}
+							open={expanded == i}
 							setExpanded={setExpanded}
 						/>
 					))}
@@ -100,7 +111,7 @@ function SectionAccordian(props) {
 				<div className="flex flex-col gap-y-8">
 					{sections.map((section, i) => (
 						<AccordianImage
-							i={i}
+							open={i === expanded}
 							src={section.image}
 							key={`${section.subheading}accordianImage`}
 							handleEnterView={() => setExpanded(i)}

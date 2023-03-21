@@ -9,6 +9,10 @@ module.exports = {
 				lg: theme("spacing.12"),
 			},
 		}),
+		colors: (theme) => ({
+			...theme.colors,
+			primary: "#F1F152",
+		}),
 		extend: {
 			fontFamily: {
 				archia: ["archia"],

@@ -64,7 +64,7 @@ export default function Header() {
 			animate={hidden ? "hidden" : "visible"}
 			transition={{ ease: [0.1, 0.25, 0.3, 1], duration: 0.6 }}
 		>
-			<div className="container flex items-center justify-between">
+			<div className="container flex items-center justify-between ">
 				<Link href="/" className="opacity-100">
 					<Logo />
 				</Link>

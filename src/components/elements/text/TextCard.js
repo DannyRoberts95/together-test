@@ -61,12 +61,13 @@ export function TextCard(props) {
 		animateHeading = false,
 		background_image = null,
 		options: {
+			fill_viewport = false,
 			max_width = "max-w-2xl",
-			vertical_padding = "py-24",
+			vertical_padding = "py-32",
 			text_alignment = "",
-			has_mobile_text_alignment = false,
-			mobile_text_alignment = "",
-			section_alignment = "",
+			has_mobile_text_alignment = "left",
+			mobile_text_alignment = true,
+			section_alignment = "left",
 			subheading_tag = "h6",
 			subheading_font_size = "default",
 			subheading_classes = "",
@@ -111,7 +112,9 @@ export function TextCard(props) {
 
 	return (
 		<div
-			className={`relative flex  w-full flex-col ${mobile_section_alignment} ${sectionAlignmentClasses} `}
+			className={`relative flex  w-full flex-col ${mobile_section_alignment} ${sectionAlignmentClasses} ${
+				fill_viewport ? "min-h-screen items-center justify-center" : ""
+			} `}
 		>
 			{/* background image */}
 			{background_image && (
@@ -127,9 +130,11 @@ export function TextCard(props) {
 			)}
 
 			<div
-				className={`text-card z-20 flex flex-col ${vertical_padding} ${flexItemAlignment} ${ySpacing} text-${
+				className={`text-${text_color} text-card z-20 flex flex-col ${
+					fill_viewport ? " " : vertical_padding
+				} ${flexItemAlignment} ${ySpacing} text-${
 					has_mobile_text_alignment ? mobile_text_alignment : text_alignment
-				} md:text-${text_alignment} md:${max_width} text-${text_color}`}
+				} md:text-${text_alignment} ${max_width} `}
 			>
 				{subheading && (
 					<SubheadingTag
@@ -141,7 +146,7 @@ export function TextCard(props) {
 				)}
 				{heading && !animateHeading && (
 					<HeadingTag
-						className={`w-full text-${headingFontSize} ${
+						className={`w-full text-${headingFontSize}  ${
 							heading_classes || ""
 						} md:${heading_max_width}`}
 						dangerouslySetInnerHTML={{
@@ -153,7 +158,7 @@ export function TextCard(props) {
 				{heading && animateHeading && (
 					<AnimatedText
 						text={heading}
-						className={`w-full text-${headingFontSize} ${
+						className={`w-full  text-${headingFontSize} ${
 							heading_classes || ""
 						} md:${heading_max_width}`}
 					/>

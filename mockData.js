@@ -30,8 +30,8 @@ const mockSections = [
 								type: "button",
 								button: {
 									"": null,
-									type: "default",
-									background_color: "white",
+									type: "contained",
+									background_color: "primary",
 								},
 							},
 						},
@@ -47,8 +47,6 @@ const mockSections = [
 						subheading_classes: "",
 						heading_tag: "h1",
 						heading_font_size: "default",
-
-						max_width: "max-w-2xl",
 						content_classes: "",
 					},
 				},
@@ -182,6 +180,7 @@ const mockSections = [
 						heading_tag: "h2",
 						heading_font_size: "default",
 
+						vertical_padding: "my-24",
 						section_max_width: "",
 						max_width: "max-w-2xl",
 						heading_classes: "",
@@ -214,13 +213,13 @@ const mockSections = [
 								},
 								type: "button",
 								button: {
-									type: "default",
-									background_color: "yellow",
+									type: "contained",
 								},
 							},
 						},
 					],
 					options: {
+						fill_viewport: true,
 						section_max_width: "",
 						section_alignment: "center",
 						text_alignment: "center",
@@ -233,7 +232,6 @@ const mockSections = [
 						heading_tag: "h1",
 						heading_font_size: "default",
 
-						max_width: "max-w-2xl",
 						heading_classes: "max-w-2xl",
 						content_max_width: "max-w-lg",
 						content_classes: "",
