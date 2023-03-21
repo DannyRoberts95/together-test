@@ -12,21 +12,6 @@ function AnimatedText({ text, Tag = "p", ...others }) {
 
 	const ctrls = useAnimation();
 
-	const wordAnimation = {
-		hidden: {
-			opacity: 0,
-			// y: `0.25em`,
-		},
-		visible: {
-			opacity: 1,
-			// y: `0em`,
-			transition: {
-				duration: 1,
-				ease: [0.2, 0.65, 0.3, 0.9],
-			},
-		},
-	};
-
 	useEffect(() => {
 		if (inView) {
 			ctrls.start("visible");
@@ -76,7 +61,7 @@ export function TextCard(props) {
 		animateHeading = false,
 		background_image = null,
 		options: {
-			max_width = "",
+			max_width = "max-w-2xl",
 			vertical_padding = "py-24",
 			text_alignment = "",
 			has_mobile_text_alignment = false,
@@ -93,6 +78,7 @@ export function TextCard(props) {
 			content_classes = "",
 			custom_y_spacing = "",
 			mobile_section_alignment = "",
+			text_color = "black",
 		} = {},
 	} = props;
 
@@ -125,7 +111,7 @@ export function TextCard(props) {
 
 	return (
 		<div
-			className={`relative flex min-h-[60vh] w-full flex-col ${mobile_section_alignment} ${sectionAlignmentClasses} `}
+			className={`relative flex  w-full flex-col ${mobile_section_alignment} ${sectionAlignmentClasses} `}
 		>
 			{/* background image */}
 			{background_image && (
@@ -143,7 +129,7 @@ export function TextCard(props) {
 			<div
 				className={`text-card z-20 flex flex-col ${vertical_padding} ${flexItemAlignment} ${ySpacing} text-${
 					has_mobile_text_alignment ? mobile_text_alignment : text_alignment
-				} md:text-${text_alignment} md:${max_width}`}
+				} md:text-${text_alignment} md:${max_width} text-${text_color}`}
 			>
 				{subheading && (
 					<SubheadingTag

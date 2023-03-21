@@ -15,7 +15,7 @@ const mockSections = [
 						alt: false,
 					},
 					subheading: "",
-					animateHeading: true,
+
 					heading: "One platform powering \n better information.",
 					content:
 						"<p>Hawk empowers Public Safety agencies to make mission-critical decisions in real-time.\n",
@@ -40,7 +40,6 @@ const mockSections = [
 						section_max_width: "",
 						section_alignment: "center",
 						text_alignment: "center",
-						// TODO FIX MOBILE ALIGNMENT
 						has_mobile_text_alignment: false,
 						mobile_text_alignment: "left",
 						subheading_tag: "h6",
@@ -225,7 +224,7 @@ const mockSections = [
 						section_max_width: "",
 						section_alignment: "center",
 						text_alignment: "center",
-						// TODO FIX MOBILE ALIGNMENT
+						text_color: "white",
 						has_mobile_text_alignment: false,
 						mobile_text_alignment: "left",
 						subheading_tag: "h6",

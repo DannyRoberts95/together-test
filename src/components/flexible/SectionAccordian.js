@@ -54,19 +54,31 @@ function AccordianImage(props) {
 			{...others}
 			ref={ref}
 		>
-			<Image src={src} alt="A description of the image." width="800" height="1200" loading="lazy" blurDataURL={src} placeholder="blur" objectFit="cover" />
+			<Image
+				src={src}
+				alt="A description of the image."
+				width="800"
+				height="1200"
+				loading="lazy"
+				blurDataURL={src}
+				placeholder="blur"
+				objectFit="cover"
+			/>
 		</motion.div>
 	);
 }
 
 function SectionAccordian(props) {
 	const { sections = [] } = props;
-	const [expanded, setExpanded] = useState(null);
+	const [expanded, setExpanded] = useState(0);
 	const parentRef = useRef(null);
 
 	return (
 		<div className="center flex flex-col items-center">
-			<div ref={parentRef} className="relative mb-12 grid min-h-[100vh] grid-cols-2 gap-24 p-8">
+			<div
+				ref={parentRef}
+				className="relative mb-12 grid min-h-[100vh] grid-cols-2 gap-24 p-8"
+			>
 				{/* column */}
 				<motion.div
 					className=" sticky top-[25%] h-fit "
@@ -76,13 +88,23 @@ function SectionAccordian(props) {
 				>
 					{/* accordian */}
 					{sections.map((section, i) => (
-						<Accordion i={i} section={section} expanded={expanded} setExpanded={setExpanded} />
+						<Accordion
+							i={i}
+							section={section}
+							expanded={expanded}
+							setExpanded={setExpanded}
+						/>
 					))}
 				</motion.div>
 
 				<div className="flex flex-col gap-y-8">
 					{sections.map((section, i) => (
-						<AccordianImage i={i} src={section.image} key={`${section.subheading}accordianImage`} handleEnterView={() => setExpanded(i)} />
+						<AccordianImage
+							i={i}
+							src={section.image}
+							key={`${section.subheading}accordianImage`}
+							handleEnterView={() => setExpanded(i)}
+						/>
 					))}
 				</div>
 			</div>

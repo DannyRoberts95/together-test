@@ -2,8 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+	font-family: "archia";
+	font-style: normal;
+	font-weight: 400;
+	src: local(""), url("/fonts/MY-FONT.woff") format("woff");
+}
+
+@font-face {
+	font-family: "f37bolton";
+	font-style: bold;
+	font-weight: 600;
+	src: local(""), url("/fonts/MY-FONT-BOLD.woff") format("woff");
+}
+
 .text-h1 {
 	@apply text-6xl;
+	font-family: "archia";
 }
 .text-h2 {
 	@apply text-5xl;
@@ -16,6 +31,6 @@
 }
 
 .prose {
-	max-width:100%;
-	color:inherit;
+	max-width: 100%;
+	color: inherit;
 }

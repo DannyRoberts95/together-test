@@ -9,7 +9,18 @@ module.exports = {
 				lg: theme("spacing.12"),
 			},
 		}),
-		extend: {},
+		extend: {
+			fontFamily: {
+				archia: ["archia"],
+				f37bolton: ["f37bolton"],
+				sans: ["archia", "sans-serif"],
+			},
+		},
 	},
-	plugins: [require("@tailwindcss/line-clamp"), require("@tailwindcss/typography"), require("@tailwindcss/aspect-ratio"), require("@tailwindcss/forms")],
+	plugins: [
+		require("@tailwindcss/line-clamp"),
+		require("@tailwindcss/typography"),
+		require("@tailwindcss/aspect-ratio"),
+		require("@tailwindcss/forms"),
+	],
 };
