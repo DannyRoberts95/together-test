@@ -1,6 +1,71 @@
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import LinkGroup from "~/components/elements/links/LinkGroup";
+import { motion, useInView, useAnimation } from "framer-motion";
+
+function AnimatedText({ text, Tag = "p", ...others }) {
+	const textRef = useRef(null);
+	const inView = useInView(textRef, {
+		threshold: 0.1,
+		triggerOnce: true,
+	});
+
+	const ctrls = useAnimation();
+
+	const wordAnimation = {
+		hidden: {
+			opacity: 0,
+			// y: `0.25em`,
+		},
+		visible: {
+			opacity: 1,
+			// y: `0em`,
+			transition: {
+				duration: 1,
+				ease: [0.2, 0.65, 0.3, 0.9],
+			},
+		},
+	};
+
+	useEffect(() => {
+		if (inView) {
+			ctrls.start("visible");
+		}
+		if (!inView) {
+			ctrls.start("hidden");
+		}
+	}, [ctrls, inView]);
+
+	const words = text.split(" ");
+
+	const animatedWords = words.map((word, i) => (
+		<motion.span
+			key={i + word}
+			aria-hidden="true"
+			initial="hidden"
+			animate={ctrls}
+			variants={{
+				hidden: {
+					opacity: 0.25,
+				},
+				visible: {
+					opacity: 1,
+					transition: {
+						delay: i * 0.2,
+						duration: 0.5,
+						ease: "easeInOut",
+					},
+				},
+			}}
+		>{`${word} `}</motion.span>
+	));
+
+	return (
+		<Tag ref={textRef} {...others}>
+			{animatedWords}
+		</Tag>
+	);
+}
 
 export function TextCard(props) {
 	const {
@@ -8,6 +73,7 @@ export function TextCard(props) {
 		heading = "",
 		content = "",
 		links = [],
+		animateHeading = false,
 		background_image = null,
 		options: {
 			max_width = "",
@@ -30,13 +96,13 @@ export function TextCard(props) {
 		} = {},
 	} = props;
 
-	console.log("background_image", background_image);
-
 	const HeadingTag = heading_tag || "h2";
-	const headingFontSize = heading_font_size === "default" ? HeadingTag : heading_font_size;
+	const headingFontSize =
+		heading_font_size === "default" ? HeadingTag : heading_font_size;
 
 	const SubheadingTag = subheading_tag || "h6";
-	const subheadingFontSize = subheading_font_size === "default" ? SubheadingTag : subheading_font_size;
+	const subheadingFontSize =
+		subheading_font_size === "default" ? SubheadingTag : subheading_font_size;
 
 	const ySpacings = {
 		h1: "space-y-6",
@@ -44,9 +110,11 @@ export function TextCard(props) {
 		h3: "space-y-3",
 	};
 
-	const ySpacing = custom_y_spacing || ySpacings[headingFontSize] || "space-y-2";
+	const ySpacing =
+		custom_y_spacing || ySpacings[headingFontSize] || "space-y-2";
 
-	const flexItemAlignment = text_alignment === "center" ? "items-center" : "items-start";
+	const flexItemAlignment =
+		text_alignment === "center" ? "items-center" : "items-start";
 
 	let sectionAlignmentClasses = "items-start";
 	if (section_alignment === "center") {
@@ -56,11 +124,19 @@ export function TextCard(props) {
 	}
 
 	return (
-		<div className={`relative flex w-full flex-col ${mobile_section_alignment} ${sectionAlignmentClasses} `}>
+		<div
+			className={`relative flex min-h-[60vh] w-full flex-col ${mobile_section_alignment} ${sectionAlignmentClasses} `}
+		>
 			{/* background image */}
 			{background_image && (
-				<div className="absolute top-0 left-0 h-full w-full ">
-					<Image layout="fill" priority objectFit="cover" objectPosition="top center" src={background_image.src} />
+				<div className="absolute top-[50%] left-[50%] h-full w-screen -translate-y-1/2 -translate-x-1/2 ">
+					<Image
+						layout="fill"
+						priority
+						objectFit="cover"
+						objectPosition="center"
+						src={background_image.src}
+					/>
 				</div>
 			)}
 
@@ -70,18 +146,46 @@ export function TextCard(props) {
 				} md:text-${text_alignment} md:${max_width}`}
 			>
 				{subheading && (
-					<SubheadingTag className={`text-${subheadingFontSize} w-full ${subheading_classes || ""}`} dangerouslySetInnerHTML={{ __html: subheading }} />
+					<SubheadingTag
+						className={`text-${subheadingFontSize} w-full ${
+							subheading_classes || ""
+						}`}
+						dangerouslySetInnerHTML={{ __html: subheading }}
+					/>
 				)}
-				{heading && (
+				{heading && !animateHeading && (
 					<HeadingTag
-						className={`w-full text-${headingFontSize} ${heading_classes || ""} md:${heading_max_width}`}
+						className={`w-full text-${headingFontSize} ${
+							heading_classes || ""
+						} md:${heading_max_width}`}
 						dangerouslySetInnerHTML={{
 							__html: heading,
 						}}
 					/>
 				)}
-				{content && <div className={`prose w-full ${content_classes || ""} md:${content_max_width || ""}`} dangerouslySetInnerHTML={{ __html: content }} />}
-				{links?.length > 0 && links[0]?.link?.link?.url?.length > 0 && <LinkGroup links={links} className={headingFontSize === "h1" ? "md:pt-4" : "pt-2"} />}
+
+				{heading && animateHeading && (
+					<AnimatedText
+						text={heading}
+						className={`w-full text-${headingFontSize} ${
+							heading_classes || ""
+						} md:${heading_max_width}`}
+					/>
+				)}
+				{content && (
+					<div
+						className={`prose w-full ${content_classes || ""} md:${
+							content_max_width || ""
+						}`}
+						dangerouslySetInnerHTML={{ __html: content }}
+					/>
+				)}
+				{links?.length > 0 && links[0]?.link?.link?.url?.length > 0 && (
+					<LinkGroup
+						links={links}
+						className={headingFontSize === "h1" ? "md:pt-4" : "pt-2"}
+					/>
+				)}
 			</div>
 		</div>
 	);

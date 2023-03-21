@@ -15,8 +15,10 @@ const mockSections = [
 						alt: false,
 					},
 					subheading: "",
+					animateHeading: true,
 					heading: "One platform powering \n better information.",
-					content: "<p>Hawk empowers Public Safety agencies to make mission-critical decisions in real-time.\n",
+					content:
+						"<p>Hawk empowers Public Safety agencies to make mission-critical decisions in real-time.\n",
 					links: [
 						{
 							link: {
@@ -104,7 +106,8 @@ const mockSections = [
 						{
 							subheading: "Visualise",
 							heading: "Never Miss a Thing.",
-							content: "<p>Hawk empowers Public Safety agencies to make mission-critical decisions in real-time.\n",
+							content:
+								"<p>Hawk empowers Public Safety agencies to make mission-critical decisions in real-time.\n",
 							image: "/images/illustrations/image_05.png",
 							links: [
 								{
@@ -135,7 +138,8 @@ const mockSections = [
 							image: "/images/illustrations/image_04.png",
 							subheading: "Respond",
 							heading: "Respond faster & more efficiently",
-							content: "<p>Develop smarter strategies and make better decisions. Save lives and protect communities.\n",
+							content:
+								"<p>Develop smarter strategies and make better decisions. Save lives and protect communities.\n",
 						},
 					],
 				},
@@ -148,7 +152,13 @@ const mockSections = [
 				acfe_flexible_toggle: "",
 				text_card: {
 					subheading: "Our Mission",
-					heading: "We’re empowering the world’s most important organizations to transform Public Safety, protect civil liberties & ensure personal freedom.",
+					heading:
+						"We’re empowering the world’s most important organizations to transform Public Safety, protect civil liberties & ensure personal freedom.",
+					animateHeading: true,
+					background_image: {
+						src: "/images/backgrounds/background_01.jpg",
+						alt: false,
+					},
 					links: [
 						{
 							link: {
