@@ -52,9 +52,8 @@ function ImageCarousel(props) {
 	const { images = [], title = "" } = props;
 
 	const imgs = images.map((image, i) => (
-		<span className="relative mx-2">
+		<span key={image + i} className="relative mx-2">
 			<Image
-				key={image + i}
 				layout="fixed"
 				blurDataURL={image}
 				src={image}

@@ -78,7 +78,7 @@ export default function Header() {
 				className={`fixed left-0 h-screen w-screen bg-white ${
 					drawerOpen ? "block" : "hidden"
 				}`}
-				initial={{ opacity: 0 }}
+				initial={{ opacity: drawerOpen ? 1 : 0 }}
 				animate={{
 					opacity: drawerOpen ? 1 : 0,
 					left: drawerOpen ? 0 : 0,

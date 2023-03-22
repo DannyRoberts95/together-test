@@ -88,12 +88,7 @@ export default Button;
  * Text Link
  */
 const TextLinkStyled = styled.div``;
-export function TextLink({
-	className = "",
-	link,
-	children,
-	underlineColour = "black",
-}) {
+export function TextLink({ className = "", link, children }) {
 	return (
 		<TextLinkStyled
 			className={`text-16px group inline-flex cursor-pointer select-none items-center leading-tight ${className}`}

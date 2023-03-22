@@ -7,10 +7,7 @@ function LinkGroup({ links, className = "" }) {
 			<div className="-mb-4 md:flex md:space-x-5">
 				{links?.map(({ link }, i) => (
 					<div key={`linkgroupitem${i}`} className="pb-4">
-						<Link
-							{...link}
-							className={links.length > 1 ? "w-full md:w-auto" : ""}
-						/>
+						<Link {...link} className="w-full md:w-auto" />
 					</div>
 				))}
 			</div>

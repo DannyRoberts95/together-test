@@ -6,7 +6,7 @@ import TextCard from "../elements/text/TextCard";
 function Accordion(props) {
 	const { open, section = {} } = props;
 	return (
-		<div div className="w-full border-t-[1px] py-2">
+		<div className="w-full border-t-[1px] py-2">
 			<p className="body-large my-2">{section.subheading}</p>
 			<motion.div
 				initial="collapsed"
@@ -72,19 +72,20 @@ function SectionAccordian(props) {
 	const { sections = [] } = props;
 	const [expanded, setExpanded] = useState(0);
 
+	console.log(sections);
+
 	const mobile = (
 		<div className="relative mb-12 p-8 md:hidden">
 			<div className="flex flex-col gap-y-8">
 				{sections.map((section, i) => (
-					<>
+					<span key={`${section.subheading}accordian-${i}`}>
 						<AccordianImage
 							i={i}
 							src={section.image}
-							key={`${section.subheading}accordianImage`}
 							handleEnterView={() => setExpanded(i)}
 						/>
 						<Accordion section={section} open setExpanded={setExpanded} />
-					</>
+					</span>
 				))}
 			</div>
 		</div>
@@ -98,7 +99,7 @@ function SectionAccordian(props) {
 					<AccordianImage
 						open={i === expanded}
 						src={section.image}
-						key={`${section.subheading}accordianImage`}
+						key={`${section.subheading}accordianImage-${i}`}
 						handleEnterView={() => setExpanded(i)}
 					/>
 				))}
@@ -112,6 +113,7 @@ function SectionAccordian(props) {
 			>
 				{sections.map((section, i) => (
 					<Accordion
+						key={`${section.subheading}accordianContent-${i}`}
 						section={section}
 						open={expanded === i}
 						setExpanded={setExpanded}

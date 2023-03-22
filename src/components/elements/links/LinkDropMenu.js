@@ -25,8 +25,8 @@ function LinkDropMenu({ title, links, expanded = false }) {
 			<div className="rounded  border-[1px] p-4">
 				{links?.map(({ link }, i) => (
 					<motion.div
-						key={`linkdropdownitem${i}`}
-						className="py-2"
+						key={`linkdropdownitem${i + link}`}
+						className="py-1"
 						animate={{ opacity: open ? 1 : 0, left: open ? -150 : 0 }}
 						transition={{
 							ease: "easeInOut",
@@ -44,7 +44,12 @@ function LinkDropMenu({ title, links, expanded = false }) {
 	const expandedMenuList = (
 		<div className=" pl-4">
 			{links?.map(({ link }, i) => (
-				<Link className="my-2" onClick={handleClose} {...link} />
+				<Link
+					key={link.toString() + i}
+					className="my-1"
+					onClick={handleClose}
+					{...link}
+				/>
 			))}
 		</div>
 	);
@@ -55,8 +60,8 @@ function LinkDropMenu({ title, links, expanded = false }) {
 			onMouseEnter={handleOpen}
 			onMouseLeave={handleClose}
 		>
-			<div className=" flex items-center p-2">
-				<p className="body-large ">{title}</p>
+			<div className=" flex items-center p-1">
+				<p className="text-h4">{title}</p>
 				{!expanded && (
 					<motion.div
 						animate={{ transform: `rotate(${open ? 180 : 0}deg)` }}
