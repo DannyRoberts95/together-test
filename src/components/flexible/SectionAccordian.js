@@ -72,8 +72,6 @@ function SectionAccordian(props) {
 	const { sections = [] } = props;
 	const [expanded, setExpanded] = useState(0);
 
-	console.log(sections);
-
 	const mobile = (
 		<div className="relative mb-12 p-8 md:hidden">
 			<div className="flex flex-col gap-y-8">

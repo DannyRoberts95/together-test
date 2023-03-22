@@ -25,7 +25,7 @@ const mockSections = [
 								link: {
 									title: "Get Started",
 									url: "/resources/",
-									target: "",
+									target: "_blank",
 								},
 								type: "button",
 								button: {
@@ -185,8 +185,8 @@ const mockSections = [
 							link: {
 								link: {
 									title: "Get Started",
-									url: "#",
-									target: "",
+									url: "/resources/",
+									target: "_blank",
 								},
 								type: "button",
 								button: {
