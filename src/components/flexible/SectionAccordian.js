@@ -92,7 +92,7 @@ function SectionAccordian(props) {
 			</div>
 
 			{/* Desktop */}
-			<div className=" relative mb-12  hidden min-h-[100vh] grid-cols-2 gap-24 p-16 md:grid">
+			<div className=" relative mb-12  hidden min-h-[75vh] grid-cols-2 gap-24 p-16 md:grid">
 				<div className="flex flex-col gap-y-8">
 					{sections.map((section, i) => (
 						<AccordianImage
@@ -105,7 +105,7 @@ function SectionAccordian(props) {
 				</div>
 
 				<motion.div
-					className=" sticky top-[25%] h-fit "
+					className="sticky top-[25%] h-fit "
 					animate={{ opacity: expanded == null ? 0 : 1 }}
 					transition={{ duration: 1, ease: "easeInOut" }}
 				>
@@ -113,7 +113,7 @@ function SectionAccordian(props) {
 					{sections.map((section, i) => (
 						<Accordion
 							section={section}
-							open={expanded == i}
+							open={expanded === i}
 							setExpanded={setExpanded}
 						/>
 					))}

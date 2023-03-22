@@ -1,8 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-
-// TODO: ADD MOTION
-
+import { motion } from "framer-motion";
 /**
  * Button
  */
@@ -14,7 +12,16 @@ export function Button({
 	children,
 	...other
 }) {
-	let typeClasses = `${className} text-white trans border border-inherit select-none appearance-none`;
+	const [hovered, setHovered] = useState(null);
+
+	const handleHover = () => {
+		!button.disableAnimation && setHovered(true);
+	};
+	const handleLeave = () => {
+		!button.disableAnimation && setHovered(false);
+	};
+
+	let typeClasses = `${className} whitespace-nowrap	 text-white trans border border-inherit select-none appearance-none`;
 
 	if (size === "small") {
 		typeClasses += " inline-block rounded text-13px px-5 py-2 font-medium";
@@ -53,15 +60,25 @@ export function Button({
 	}
 
 	return link?.title ? (
-		<div
+		<motion.div
+			animate={{ scale: hovered ? 1.05 : 1 }}
+			transition={{ ease: "easeInOut" }}
+			onMouseEnter={handleHover}
+			onMouseLeave={handleLeave}
 			className={typeClasses}
 			{...other}
 			dangerouslySetInnerHTML={{ __html: link?.title }}
 		/>
 	) : (
-		<div className={typeClasses} {...other}>
+		<motion.div
+			animate={{ scale: hovered ? 1.05 : 1 }}
+			onMouseEnter={handleHover}
+			onMouseLeave={handleLeave}
+			className={typeClasses}
+			{...other}
+		>
 			{children}
-		</div>
+		</motion.div>
 	);
 }
 

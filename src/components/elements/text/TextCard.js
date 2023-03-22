@@ -101,7 +101,11 @@ export function TextCard(props) {
 		custom_y_spacing || ySpacings[headingFontSize] || "space-y-2";
 
 	const flexItemAlignment =
-		text_alignment === "center" ? "items-center" : "items-start";
+		text_alignment === "center" ? "items-start md:items-center" : "items-start";
+
+	const current_alignment = `text-${
+		has_mobile_text_alignment ? mobile_text_alignment : text_alignment
+	} text-left md:text-${text_alignment} ${max_width} `;
 
 	let sectionAlignmentClasses = "items-start";
 	if (section_alignment === "center") {
@@ -109,10 +113,6 @@ export function TextCard(props) {
 	} else if (section_alignment === "right") {
 		sectionAlignmentClasses = "items-end";
 	}
-
-	const current_alignment = `text-${
-		has_mobile_text_alignment ? mobile_text_alignment : text_alignment
-	} md:text-${text_alignment} ${max_width} `;
 
 	return (
 		<div
@@ -136,7 +136,7 @@ export function TextCard(props) {
 			<div
 				className={`text-${text_color} text-card z-20 flex flex-col ${
 					fill_viewport ? " " : vertical_padding
-				} ${flexItemAlignment} ${ySpacing}
+				} ${flexItemAlignment} items-center ${ySpacing}
 			${current_alignment} ${max_width}`}
 			>
 				{subheading && (
@@ -168,9 +168,9 @@ export function TextCard(props) {
 				)}
 				{content && (
 					<div
-						className={`body-large w-full ${content_classes || ""} md:${
-							content_max_width || ""
-						}`}
+						className={`md:body-large prose w-full ${
+							content_classes || ""
+						} md:${content_max_width || ""}`}
 						dangerouslySetInnerHTML={{ __html: content }}
 					/>
 				)}

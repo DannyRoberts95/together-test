@@ -5,7 +5,7 @@ import Link from "~/components/elements/links/Link";
 
 const animationStep = 0.25;
 
-function LinkDropMenu({ title, links }) {
+function LinkDropMenu({ title, links, expanded = false }) {
 	const [open, setOpen] = useState(false);
 
 	const handleOpen = useCallback(() => {
@@ -16,32 +16,57 @@ function LinkDropMenu({ title, links }) {
 		setOpen(false);
 	});
 
-	return (
-		<div className="relative mr-4" onMouseEnter={handleOpen} onMouseLeave={handleClose}>
-			<div className="flex p-2">
-				<p>{title}</p>
-				<motion.div animate={{ transform: `rotate(${open ? 180 : 0}deg)` }} transition={{ ease: "easeInOut", duration: 0.25 }}>
-					<ArrowDown />
-				</motion.div>
+	const menuList = (
+		<motion.div
+			animate={{ maxHeight: open ? 500 : 0 }}
+			transition={{ ease: "easeInOut", duration: animationStep }}
+			className="absolute top-[calc(100%)] flex max-h-0 w-full min-w-[150px] flex-col overflow-hidden bg-white"
+		>
+			<div className="rounded  border-[1px] p-4">
+				{links?.map(({ link }, i) => (
+					<motion.div
+						key={`linkdropdownitem${i}`}
+						className="py-2"
+						animate={{ opacity: open ? 1 : 0, left: open ? -150 : 0 }}
+						transition={{
+							ease: "easeInOut",
+							duration: i * animationStep,
+							delay: animationStep * 0.5,
+						}}
+					>
+						<Link {...link} />
+					</motion.div>
+				))}
 			</div>
-			<motion.div
-				animate={{ maxHeight: open ? 500 : 0 }}
-				transition={{ ease: "easeIn", duration: animationStep }}
-				className="absolute top-[calc(100%)] flex max-h-0 w-full min-w-[150px] flex-col overflow-hidden bg-white"
-			>
-				<div className="border-[1px]p-4">
-					{links?.map(({ link }, i) => (
-						<motion.div
-							key={`linkdropdownitem${i}`}
-							className="py-2"
-							animate={{ opacity: open ? 1 : 0, left: open ? -150 : 0 }}
-							transition={{ ease: "easeIn", duration: i * animationStep, delay: animationStep * 0.5 }}
-						>
-							<Link {...link} />
-						</motion.div>
-					))}
-				</div>
-			</motion.div>
+		</motion.div>
+	);
+
+	const expandedMenuList = (
+		<div className=" pl-4">
+			{links?.map(({ link }, i) => (
+				<Link className="my-2" onClick={handleClose} {...link} />
+			))}
+		</div>
+	);
+
+	return (
+		<div
+			className="relative mr-4"
+			onMouseEnter={handleOpen}
+			onMouseLeave={handleClose}
+		>
+			<div className=" flex items-center p-2">
+				<p className="body-large ">{title}</p>
+				{!expanded && (
+					<motion.div
+						animate={{ transform: `rotate(${open ? 180 : 0}deg)` }}
+						transition={{ ease: "easeInOut", duration: 0.25 }}
+					>
+						<ArrowDown />
+					</motion.div>
+				)}
+			</div>
+			{expanded ? expandedMenuList : menuList}
 		</div>
 	);
 }
