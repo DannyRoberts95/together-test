@@ -40,7 +40,7 @@ const mockSections = [
 						section_max_width: "",
 						section_alignment: "center",
 						text_alignment: "center",
-						mobile_text_alignment: "center",
+						mobile_text_alignment: "start",
 						has_mobile_text_alignment: false,
 						subheading_tag: "h6",
 						subheading_font_size: "default",
@@ -196,14 +196,11 @@ const mockSections = [
 						},
 					],
 					options: {
-						max_width: "max-w-4xl",
 						fill_viewport: true,
 						section_alignment: "center",
 						text_alignment: "center",
 						has_mobile_text_alignment: false,
-
 						mobile_text_alignment: "left",
-
 						text_color: "white",
 						subheading_tag: "h6",
 						heading_tag: "h1",

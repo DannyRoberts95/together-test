@@ -101,11 +101,11 @@ export function TextCard(props) {
 		custom_y_spacing || ySpacings[headingFontSize] || "space-y-2";
 
 	const flexItemAlignment =
-		text_alignment === "center" ? "items-start md:items-center" : "items-start";
+		text_alignment === "center" ? "items-center" : "items-start";
 
 	const current_alignment = `text-${
 		has_mobile_text_alignment ? mobile_text_alignment : text_alignment
-	} text-left md:text-${text_alignment} ${max_width} `;
+	} text-left md:text-${text_alignment}`;
 
 	let sectionAlignmentClasses = "items-start";
 	if (section_alignment === "center") {
@@ -136,7 +136,7 @@ export function TextCard(props) {
 			<div
 				className={`text-${text_color} text-card z-20 flex flex-col ${
 					fill_viewport ? " " : vertical_padding
-				} ${flexItemAlignment} items-center ${ySpacing}
+				} ${flexItemAlignment}  ${ySpacing}
 			${current_alignment} ${max_width}`}
 			>
 				{subheading && (
@@ -166,6 +166,7 @@ export function TextCard(props) {
 						} md:${heading_max_width}`}
 					/>
 				)}
+
 				{content && (
 					<div
 						className={`md:body-large prose w-full ${
@@ -174,6 +175,7 @@ export function TextCard(props) {
 						dangerouslySetInnerHTML={{ __html: content }}
 					/>
 				)}
+
 				{links?.length > 0 && links[0]?.link?.link?.url?.length > 0 && (
 					<LinkGroup
 						links={links}
