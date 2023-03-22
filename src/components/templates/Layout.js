@@ -14,7 +14,7 @@ export function Layout({ data, children }) {
 			<PasswordProtect password={page?.post_password}>
 				<Seo page={data?.page} />
 				<Header />
-				<main className="overflow-hidden">{children}</main>
+				<main>{children}</main>
 				<Footer />
 				<WpHotkey id={page?.ID} />
 			</PasswordProtect>

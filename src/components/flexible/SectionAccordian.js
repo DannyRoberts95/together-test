@@ -72,53 +72,59 @@ function SectionAccordian(props) {
 	const { sections = [] } = props;
 	const [expanded, setExpanded] = useState(0);
 
-	return (
-		<div className="center flex flex-col items-center">
-			{/* Mobile */}
-			<div className="relative mb-12 p-8  md:hidden">
-				<div className="flex flex-col gap-y-8">
-					{sections.map((section, i) => (
-						<>
-							<AccordianImage
-								i={i}
-								src={section.image}
-								key={`${section.subheading}accordianImage`}
-								handleEnterView={() => setExpanded(i)}
-							/>
-							<Accordion section={section} open setExpanded={setExpanded} />
-						</>
-					))}
-				</div>
-			</div>
-
-			{/* Desktop */}
-			<div className=" relative mb-12  hidden min-h-[75vh] grid-cols-2 gap-24 p-16 md:grid">
-				<div className="flex flex-col gap-y-8">
-					{sections.map((section, i) => (
+	const mobile = (
+		<div className="relative mb-12 p-8 md:hidden">
+			<div className="flex flex-col gap-y-8">
+				{sections.map((section, i) => (
+					<>
 						<AccordianImage
-							open={i === expanded}
+							i={i}
 							src={section.image}
 							key={`${section.subheading}accordianImage`}
 							handleEnterView={() => setExpanded(i)}
 						/>
-					))}
-				</div>
-
-				<motion.div
-					className="sticky top-[25%] h-fit "
-					animate={{ opacity: expanded == null ? 0 : 1 }}
-					transition={{ duration: 1, ease: "easeInOut" }}
-				>
-					{/* accordian */}
-					{sections.map((section, i) => (
-						<Accordion
-							section={section}
-							open={expanded === i}
-							setExpanded={setExpanded}
-						/>
-					))}
-				</motion.div>
+						<Accordion section={section} open setExpanded={setExpanded} />
+					</>
+				))}
 			</div>
+		</div>
+	);
+
+	const desktop = (
+		<div className=" relative mb-12 hidden min-h-[75vh] grid-cols-2 gap-24 p-16 md:grid">
+			{/* images */}
+			<div className="flex flex-col gap-y-8 ">
+				{sections.map((section, i) => (
+					<AccordianImage
+						open={i === expanded}
+						src={section.image}
+						key={`${section.subheading}accordianImage`}
+						handleEnterView={() => setExpanded(i)}
+					/>
+				))}
+			</div>
+
+			{/* accordian */}
+			<motion.div
+				className="sticky top-[25%] h-fit "
+				animate={{ opacity: expanded == null ? 0 : 1 }}
+				transition={{ duration: 1, ease: "easeInOut" }}
+			>
+				{sections.map((section, i) => (
+					<Accordion
+						section={section}
+						open={expanded === i}
+						setExpanded={setExpanded}
+					/>
+				))}
+			</motion.div>
+		</div>
+	);
+
+	return (
+		<div className="flex flex-col items-center ">
+			{mobile}
+			{desktop}
 		</div>
 	);
 }
