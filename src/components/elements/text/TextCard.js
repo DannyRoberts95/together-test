@@ -169,9 +169,9 @@ export function TextCard(props) {
 
 				{content && (
 					<div
-						className={`md:body-large prose w-full ${
-							content_classes || ""
-						} md:${content_max_width || ""}`}
+						className={`w-full  text-${headingFontSize} ${
+							heading_classes || ""
+						} md:${heading_max_width}`}
 						dangerouslySetInnerHTML={{ __html: content }}
 					/>
 				)}

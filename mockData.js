@@ -159,8 +159,9 @@ const mockSections = [
 
 						vertical_padding: "my-24",
 						section_max_width: "",
-						max_width: "max-w-2xl",
 						heading_classes: "",
+
+						max_width: "max-w-4xl",
 						content_max_width: "",
 						content_classes: "",
 					},
@@ -197,6 +198,7 @@ const mockSections = [
 					],
 					options: {
 						fill_viewport: true,
+						heading_max_width: "max-w-2xl",
 						section_alignment: "center",
 						text_alignment: "center",
 						has_mobile_text_alignment: false,
