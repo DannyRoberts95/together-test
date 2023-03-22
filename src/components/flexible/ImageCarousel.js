@@ -10,11 +10,15 @@ function ImageCarousel(props) {
 
 	const imgs = images.map((image, i) => (
 		<motion.span
-			className="mx-4 text-4xl"
-			initial={{ opacity: 0 }}
-			whileInView={{ opacity: 1 }}
+			className="mx-4"
+			initial={{ opacity: 0, scale: 0.5 }}
+			whileInView={{ opacity: 1, scale: 1 }}
 			viewport={{ root: scrollRef }}
-			transition={{ ease: "easeIn", duration: 0.5 * i, delay: 0.5 * i - 0.5 }}
+			transition={{
+				duration: 0.5 * i,
+				delay: 0.25 * i - 0.25,
+				ease: "easeInOut",
+			}}
 		>
 			<Image
 				key={image + i}
@@ -30,14 +34,9 @@ function ImageCarousel(props) {
 	));
 
 	return (
-		<div className="flex flex-col items-center overflow-hidden">
-			{title && <p className="text-h4 my-8">{title}</p>}
-			<div
-				ref={scrollRef}
-				className="relative mt-12 flex w-full justify-between"
-			>
-				{imgs}
-			</div>
+		<div ref={scrollRef} className="flex flex-col items-center overflow-hidden">
+			{title && <p className="body-large my-8 overflow-x-auto">{title}</p>}
+			<div className="relative mt-12 flex">{imgs}</div>
 		</div>
 	);
 }

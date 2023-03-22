@@ -64,9 +64,9 @@ export function TextCard(props) {
 			fill_viewport = false,
 			max_width = "max-w-2xl",
 			vertical_padding = "py-32",
-			text_alignment = "",
-			has_mobile_text_alignment = "left",
-			mobile_text_alignment = true,
+			text_alignment = "center",
+			has_mobile_text_alignment = true,
+			mobile_text_alignment = "center",
 			section_alignment = "left",
 			subheading_tag = "h6",
 			subheading_font_size = "default",
@@ -110,6 +110,10 @@ export function TextCard(props) {
 		sectionAlignmentClasses = "items-end";
 	}
 
+	const current_alignment = `text-${
+		has_mobile_text_alignment ? mobile_text_alignment : text_alignment
+	} md:text-${text_alignment} ${max_width} `;
+
 	return (
 		<div
 			className={`relative flex  w-full flex-col ${mobile_section_alignment} ${sectionAlignmentClasses} ${
@@ -132,9 +136,8 @@ export function TextCard(props) {
 			<div
 				className={`text-${text_color} text-card z-20 flex flex-col ${
 					fill_viewport ? " " : vertical_padding
-				} ${flexItemAlignment} ${ySpacing} text-${
-					has_mobile_text_alignment ? mobile_text_alignment : text_alignment
-				} md:text-${text_alignment} ${max_width} `}
+				} ${flexItemAlignment} ${ySpacing}
+			${current_alignment} ${max_width}`}
 			>
 				{subheading && (
 					<SubheadingTag
@@ -165,7 +168,7 @@ export function TextCard(props) {
 				)}
 				{content && (
 					<div
-						className={`prose w-full ${content_classes || ""} md:${
+						className={`body-large w-full ${content_classes || ""} md:${
 							content_max_width || ""
 						}`}
 						dangerouslySetInnerHTML={{ __html: content }}

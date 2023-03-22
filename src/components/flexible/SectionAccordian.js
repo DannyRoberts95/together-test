@@ -6,14 +6,13 @@ import TextCard from "../elements/text/TextCard";
 function Accordion(props) {
 	const { open, section = {} } = props;
 	return (
-		<>
-			<h3 className="text-h4 my-2">{section.subheading}</h3>
+		<div div className="w-full border-t-[1px] py-2">
+			<p className="body-large my-2">{section.subheading}</p>
 			<motion.div
 				initial="collapsed"
 				exit="collapsed"
 				animate={{ opacity: open ? 1 : 0, height: open ? "auto" : 0 }}
 				transition={{ duration: 1, ease: "anticipate" }}
-				className="pl-4"
 			>
 				<TextCard
 					{...section}
@@ -22,14 +21,17 @@ function Accordion(props) {
 						section_max_width: "",
 						subheading_tag: "h6",
 						subheading_font_size: "default",
-						subheading_classes: "mb-4",
+						subheading_classes: "mb-2",
 						heading_tag: "h3",
 						content_classes: "opacity-50",
 						vertical_padding: "py-12",
+
+						text_alignment: "left",
+						has_mobile_text_alignment: false,
 					}}
 				/>
 			</motion.div>
-		</>
+		</div>
 	);
 }
 
@@ -90,11 +92,20 @@ function SectionAccordian(props) {
 			</div>
 
 			{/* Desktop */}
-			<div className=" relative mb-12  hidden min-h-[100vh] grid-cols-2 gap-24 p-8 md:grid">
-				{/* column */}
+			<div className=" relative mb-12  hidden min-h-[100vh] grid-cols-2 gap-24 p-16 md:grid">
+				<div className="flex flex-col gap-y-8">
+					{sections.map((section, i) => (
+						<AccordianImage
+							open={i === expanded}
+							src={section.image}
+							key={`${section.subheading}accordianImage`}
+							handleEnterView={() => setExpanded(i)}
+						/>
+					))}
+				</div>
+
 				<motion.div
 					className=" sticky top-[25%] h-fit "
-					// className=" sticky top-[50%] h-fit translate-y-[-50%]"
 					animate={{ opacity: expanded == null ? 0 : 1 }}
 					transition={{ duration: 1, ease: "easeInOut" }}
 				>
@@ -107,17 +118,6 @@ function SectionAccordian(props) {
 						/>
 					))}
 				</motion.div>
-
-				<div className="flex flex-col gap-y-8">
-					{sections.map((section, i) => (
-						<AccordianImage
-							open={i === expanded}
-							src={section.image}
-							key={`${section.subheading}accordianImage`}
-							handleEnterView={() => setExpanded(i)}
-						/>
-					))}
-				</div>
 			</div>
 		</div>
 	);

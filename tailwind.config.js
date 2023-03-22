@@ -15,9 +15,15 @@ module.exports = {
 		}),
 		extend: {
 			fontFamily: {
-				archia: ["archia"],
+				archia: ["archia", "Courier New", "Courier", "monospace"],
 				f37bolton: ["f37bolton"],
-				sans: ["archia", "sans-serif"],
+				sans: [
+					"f37bolton",
+					"Courier New",
+					"Courier",
+					"monospace",
+					"sans-serif",
+				],
 			},
 		},
 	},

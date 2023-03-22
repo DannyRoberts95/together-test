@@ -6,31 +6,48 @@
 	font-family: "archia";
 	font-style: normal;
 	font-weight: 400;
-	src: local(""), url("/fonts/MY-FONT.woff") format("woff");
+	src: local(""), url("/fonts/archia/Archia-Regular.woff2") format("woff");
 }
 
 @font-face {
 	font-family: "f37bolton";
-	font-style: bold;
-	font-weight: 600;
-	src: local(""), url("/fonts/MY-FONT-BOLD.woff") format("woff");
+	font-style: normal;
+	font-weight: 400;
+	src: local(""), url("/fonts/f37bolton/F37Bolton-Light.woff2") format("woff");
 }
 
 .text-h1 {
 	@apply text-6xl;
-	font-family: "archia";
+	font-family: archia, "Courier New", Courier, monospace;
+	font-size: 4.5rem;
+	line-height: 1;
+	letter-spacing: -1%;
 }
 .text-h2 {
 	@apply text-5xl;
+	font-family: "archia";
 }
 .text-h3 {
 	@apply text-3xl;
+	font-family: "archia";
+	font-size: 2.75rem;
+	line-height: 1.1;
+	letter-spacing: -1%;
 }
 .text-h4 {
 	@apply text-xl;
+	font-family: "archia";
+}
+
+.body-large {
+	@apply text-xl;
+	font-weight: 400;
+	font-family: "f37bolton";
+	font-size: 1.25rem;
 }
 
 .prose {
 	max-width: 100%;
 	color: inherit;
+	font-family: "f37bolton";
 }
