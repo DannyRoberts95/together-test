@@ -37,7 +37,6 @@ const mockSections = [
 						},
 					],
 					options: {
-						max_width: "max-w-4xl",
 						section_max_width: "",
 						section_alignment: "center",
 						text_alignment: "center",
@@ -46,7 +45,6 @@ const mockSections = [
 						subheading_tag: "h6",
 						subheading_font_size: "default",
 						subheading_classes: "",
-						heading_classes: "text-4xl text-red-500",
 						heading_tag: "h1",
 						heading_font_size: "default",
 						content_classes: "max-w-xl",
@@ -102,23 +100,6 @@ const mockSections = [
 							content:
 								"<p>Hawk empowers Public Safety agencies to make mission-critical decisions in real-time.\n",
 							image: "/images/illustrations/image_05.png",
-							links: [
-								{
-									link: {
-										link: {
-											title: "Get Started",
-											url: "/resources/",
-											target: "",
-										},
-										type: "text",
-										button: {
-											"": null,
-											type: "default",
-											background_color: "white",
-										},
-									},
-								},
-							],
 						},
 						{
 							image: "/images/illustrations/image_03.png",

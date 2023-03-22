@@ -62,7 +62,7 @@ export function TextCard(props) {
 		background_image = null,
 		options: {
 			fill_viewport = false,
-			max_width = "max-w-2xl",
+			max_width = "max-w-4xl",
 			vertical_padding = "py-32",
 			text_alignment = "center",
 			has_mobile_text_alignment = true,
